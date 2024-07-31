@@ -1,0 +1,37 @@
+<div class="row mt-1">
+  <div class="col-lg-4 offset-lg-4">
+    <div class="card text-white bg-secondary mb-3" style="max-width: 25rem;">
+      <div class="card-header text-center">Agregar Producto</div>
+      <div class="card-body">
+        <form [formGroup]="formProducto" (ngSubmit)="addProduct()">
+          <input formControlName="descripcion" type="text" class="form-control" placeholder="Capture Descripción">
+          <span *ngIf="formProducto.get('descripcion')?.hasError('required')&&formProducto.get('descripcion')?.touched">
+            El campo descripción es <strong>requerido</strong>
+          </span>
+          <input formControlName="marca" type="text" class="form-control mt-2" placeholder="Capture Marca">
+          <span *ngIf="formProducto.get('marca')?.hasError('required')&&formProducto.get('marca')?.touched">
+            El campo marca es <strong>requerido</strong>
+          </span>
+          <input formControlName="precio" type="number" class="form-control mt-2" placeholder="Capture Precio">
+          <span *ngIf="formProducto.get('precio')?.hasError('required')&&formProducto.get('precio')?.touched">
+            El campo precio es <strong>requerido</strong>
+          </span>
+          <input formControlName="stock" type="number" class="form-control mt-2" placeholder="Capture Stock">
+          <span *ngIf="formProducto.get('stock')?.hasError('required')&&formProducto.get('stock')?.touched">
+            El campo stock es <strong>requerido</strong>
+          </span>
+          <div class="row mt-2 text-center">
+            <div class="col-lg-6">
+              <button routerLink="/" type="button" class="btn btn-secondary">Volver</button>
+            </div>
+            <div class="col-lg-6">
+              <button [disabled]="formProducto.invalid" type="submit" class="btn btn-primary">Aceptar</button>
+            </div>
+            
+            
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
