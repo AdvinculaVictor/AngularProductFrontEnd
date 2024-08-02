@@ -25,10 +25,10 @@ export class AddEditProductComponent {
     console.log(this.formProducto.value.descripcion);
     console.log(this.formProducto.get('descripcion')?.value);
     const producto: Product = {
-      Descripcion: this.formProducto.value.descripcion,
-      Marca: this.formProducto.value.marca,
-      Precio: this.formProducto.value.precio,
-      Stock: this.formProducto.value.stock
+      descripcion: this.formProducto.value.descripcion,
+      marca: this.formProducto.value.marca,
+      precio: this.formProducto.value.precio,
+      stock: this.formProducto.value.stock
     }
     console.log(producto);
   }

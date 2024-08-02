@@ -1,11 +1,12 @@
-<div class="container">
+<app-progress-bar *ngIf="loading"></app-progress-bar>
+<div *ngIf="!loading" class="container">
   <div class="title">
     <h4>Listado de Productos</h4>
     <button type="button" class="btn btn-primary" routerLink="/add">Agregar Producto</button>
   </div>
 
 
-  <table class="table table-hover">
+  <table *ngIf="listProduct.length > 0" class="table table-hover">
     <thead>
       <tr>
         <th scope="col">Descripción</th>
@@ -17,16 +18,17 @@
     </thead>
     <tbody>
       <tr *ngFor="let producto of listProduct" class="table-active">
-        <td>{{producto.Descripcion}}</td>
-        <td>{{producto.Marca}}</td>
-        <td>{{producto.Precio}}</td>
-        <td>{{producto.Stock}}</td>
+        <td>{{producto.descripcion}}</td>
+        <td>{{producto.marca}}</td>
+        <td>{{producto.precio | currency}}</td>
+        <td>{{producto.stock}}</td>
         <td>
-          <button routerLink="/edit/{{producto.ProductoId}}" type="button" class="btn btn-info btn-sm">Editar</button>
-          <button [routerLink]="['/edit',producto.ProductoId]" type="button" class="btn btn-info btn-sm ms-2">Editar</button>
-          <button type="button" class="btn btn-secondary btn-sm ms-2">Eliminar</button>
+          <button routerLink="/edit/{{producto.productoId}}" type="button" class="btn btn-info btn-sm">Editar</button>
+          <button [routerLink]="['/edit',producto.productoId]" type="button" class="btn btn-info btn-sm ms-2">Editar</button>
+          <button (click)="deleteProduct(producto.productoId!)" type="button" class="btn btn-secondary btn-sm ms-2">Eliminar</button>
         </td>
       </tr>
     </tbody>
   </table>
+  <h5 *ngIf="listProduct.length==0">No hay productos para mostrar</h5>
 </div>
