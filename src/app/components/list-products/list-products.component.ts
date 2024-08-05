@@ -21,13 +21,13 @@ export class ListProductsComponent {
   }
   getListProducts(){
     this.loading = true;
-    setTimeout(() => { //Corriendo dentro de un settimeout para probar el progress bar
+    //setTimeout(() => { //Corriendo dentro de un settimeout para probar el progress bar
       this._productService.getListProducts().subscribe((data: Product[]) => {
         this.listProduct = data;
         console.log(this.listProduct);
         this.loading = false;
       })
-    }, 1500) //settimeout 1.5 s
+    //}, 1500) //settimeout 1.5 s
   }
 
   deleteProduct(id:number){
